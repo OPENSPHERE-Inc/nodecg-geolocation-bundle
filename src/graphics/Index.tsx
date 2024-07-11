@@ -44,7 +44,7 @@ export function Index() {
 								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 							/>
 
-							{ markers?.[0].url ? <Marker
+							{ markers?.[0] ? <Marker
 								position={ new LatLng(value.position?.[0] ?? 0,  value.position?.[1] ?? 0) }
 								icon={ Leaflet.icon({
 									iconUrl: markers[0].url,
