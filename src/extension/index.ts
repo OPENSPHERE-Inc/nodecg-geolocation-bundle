@@ -29,5 +29,5 @@ module.exports = function (nodecg: NodeCG.ServerAPI) {
 		res.sendStatus(204);
 	});
 
-	nodecg.mount("/my-test-bundle", router);
+	nodecg.mount("/geolocation-bundle", router);
 };
