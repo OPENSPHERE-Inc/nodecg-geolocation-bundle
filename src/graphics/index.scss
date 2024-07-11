@@ -1,0 +1,43 @@
+@use "bulma";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html {
+  background-color: transparent !important;
+  overflow: hidden;
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+}
+
+
+.stream-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .leaflet-container {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    bottom: 45px;
+    right: 45px;
+  }
+
+  .timestamp {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+
+  .address {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    margin-left: 45px;
+    margin-right: 490px;
+  }
+}

@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+		"timestamp": {
+			"description": "Timestamp",
+			"type": "integer",
+			"minimum": 0
+		},
+		"position": {
+			"description": "Position",
+			"type": "array",
+			"items": {
+				"type": "number",
+				"minimum": 0
+			}
+		},
+		"address": {
+			"description": "Address",
+			"type": "string"
+		}
+	},
+	"additionalProperties": false,
+	"required": [ "timestamp" ],
+	"default": {
+		"timestamp": 0,
+		"position": [ 35.686152, 139.752842 ],
+		"address": ""
+	}
+}
