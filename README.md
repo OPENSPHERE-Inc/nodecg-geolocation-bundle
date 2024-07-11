@@ -1,17 +1,67 @@
-# my-test-bundle
+# Geolocation bundle for drive livestreaming
 
-my-test-bundle is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
-It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `^2.0.0`
-You will need to have an appropriate version of NodeCG installed to use it.
+## 概要
 
+位置情報をモバイル端末から受け取って、配信画面に地図として表示するための [NodeCG](http://github.com/nodecg/nodecg) バンドルです。
+ドライブ配信、街歩き配信等で使用することを想定しています。
 
-## Developing
+NodeCG `^2.0.0` に対応しています。
 
-Use the following commands:
+## カスタムルート
 
--   `npm run build`: Build the project once.
--   `npm run watch`: Build the project and automatically rebuild on changes.
--   `npm run dev`: Build the project, automatically rebuild on changes, launch the NodeCG server, and automatically restart the NodeCG server on changes.
-    -   Only restarts the NodeCG server when server-side (i.e. extension) code changes. Changes to client-side code (i.e. dashboard panels and graphics) will not cause the server to restart, nor will they cause browser tabs to automatically refresh.
+本バンドルでは、外部からアクセス可能なカスタムルートが提供されます。
+モバイル端末からのアクセスを想定しています。
 
+POST のみ受け付けます。
+NodeCG のセキュリティが有効な場合は URL に `?key=[access token]` を付加してください。
+
+### 地図の座標設定
+
+#### エンドポイント
+
+> POST `/geolocation-bundle/position`
+
+#### リクエスト
+
+```json
+{
+  "position": [ 35.686152, 139.752842 ]
+}
+```
+
+- `position` - latitude (緯度), longitude (経度) の順で `number` の配列
+
+###  住所表示更新
+
+#### エンドポイント
+
+> POST `/geolocation-bundle/address`
+
+#### リクエスト
+
+```json
+{
+  "address": "東京都千代田区丸の内1-1-1"
+}
+```
+
+- `address` - `string`
+
+## アセット
+
+### marker
+
+地図上に現在値を示すマーカーを表示可能です。
+透過ありの png, gif, svg を使用可能です。 
+アニメーションも使用可です。
+
+NodeCG ダッシュボードからアップロードしてください。
+
+## 開発
+
+以下のコマンドが使用可能です。
+
+-   `npm run build`: プロジェクトをビルド
+-   `npm run watch`: ファイルの変更を監視して自動的にビルドします
+-   `npm run dev`: ファイルの変更を監視して自動的にビルドし、動作環境に反映します。必要に応じて NodeCG の開発サーバーを再起動します
 
