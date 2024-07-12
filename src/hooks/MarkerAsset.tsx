@@ -2,21 +2,19 @@ import type NodeCG from '@nodecg/types';
 import { useEffect, useRef, useState } from "react";
 
 
-export const useAsset = () => {
+export const useMarkerAsset = () => {
     const assetRef = useRef(nodecg.Replicant<NodeCG.AssetFile[]>("assets:marker"));
-
-    const [value, setValue] = useState(assetRef.current.value);
+    const [markers, setMarkers] = useState(assetRef.current.value);
 
     useEffect(() => {
-        const handleChange = (newValue?: NodeCG.AssetFile[]) => setValue(newValue && [ ...newValue ]);
-
+        const handleChange = (newValue?: NodeCG.AssetFile[]) => setMarkers(newValue && [ ...newValue ]);
         assetRef.current.on("change", handleChange);
 
         return () => {
-            assetRef.current.removeListener("change", handleChange);
+            assetRef.current.off("change", handleChange);
         };
     }, []);
 
-    return { value };
+    return { markers };
 };
 

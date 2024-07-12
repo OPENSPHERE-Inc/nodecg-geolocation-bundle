@@ -11,8 +11,7 @@
 			"description": "Position",
 			"type": "array",
 			"items": {
-				"type": "number",
-				"minimum": 0
+				"type": "number"
 			}
 		},
 		"address": {

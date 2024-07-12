@@ -41,7 +41,7 @@
     "assetCategories": [
       {
         "name": "marker",
-        "title": "Maker of position",
+        "title": "Position marker image",
         "allowedTypes": [
           "gif",
           "png",

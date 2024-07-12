@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useReplicant } from "../components/Replicant";
+import { useGeolocationReplicant } from "../hooks/GeolocationReplicant";
 import "./panel.scss";
 import { GeolocationReplicant } from "../types/schemas";
 
@@ -10,7 +10,10 @@ interface FormData {
 	address: string;
 }
 
-const Form = ({ value, onSubmit }: { value?: GeolocationReplicant, onSubmit: (values: FormData) => unknown }) => {
+const Form = ({ geolocation, onSubmit }: {
+	geolocation?: GeolocationReplicant,
+	onSubmit: (values: FormData) => unknown }
+) => {
 	const {
 		register,
 		handleSubmit,
@@ -19,22 +22,22 @@ const Form = ({ value, onSubmit }: { value?: GeolocationReplicant, onSubmit: (va
 		formState: { isSubmitting, isValid }
 	} = useForm<FormData>({
 		defaultValues: {
-			position: value?.position,
-			address: value?.address,
+			position: geolocation?.position,
+			address: geolocation?.address,
 		}
 	});
 
 	useEffect(() => {
 		const positionState = getFieldState("position");
-		if (value?.position && !positionState.isDirty) {
-			setValue("position", value.position);
+		if (geolocation?.position && !positionState.isDirty) {
+			setValue("position", geolocation.position);
 		}
 
 		const addressState = getFieldState("address");
-		if (value?.address && !addressState.isDirty) {
-			setValue("address", value.address);
+		if (geolocation?.address && !addressState.isDirty) {
+			setValue("address", geolocation.address);
 		}
-	}, [ value?.position, value?.address ]);
+	}, [ geolocation?.position, geolocation?.address ]);
 
 	return (<form onSubmit={ handleSubmit(onSubmit) }>
 		<label className="label">
@@ -102,11 +105,11 @@ const Form = ({ value, onSubmit }: { value?: GeolocationReplicant, onSubmit: (va
 };
 
 export const Panel = () => {
-	const { value, setValue } = useReplicant();
+	const { geolocation, setGeolocation } = useGeolocationReplicant();
 
 	const submit: SubmitHandler<FormData> = useCallback(async (data) => {
 		console.debug(data.position);
-		setValue((prev) => ({
+		setGeolocation((prev) => ({
 			timestamp: Date.now(),
 			...prev,
 			position: data.position,
@@ -118,7 +121,7 @@ export const Panel = () => {
 		<section className="section">
 			<div className="container">
 				<div className="content">
-					{ value ? <Form value={value} onSubmit={submit} /> : null }
+					{ geolocation ? <Form geolocation={geolocation} onSubmit={submit} /> : null }
 				</div>
 			</div>
 		</section>

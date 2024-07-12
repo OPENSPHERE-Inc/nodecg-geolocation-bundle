@@ -1,23 +1,22 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import type { GeolocationReplicant } from "../types/schemas";
 
-export const useReplicant = () => {
+export const useGeolocationReplicant = () => {
     const replicantRef = useRef(nodecg.Replicant<GeolocationReplicant>("geolocationReplicant"));
-    const [value, setValue] = useState<GeolocationReplicant | undefined>(replicantRef.current.value);
+    const [geolocation, setGeolocation] = useState<GeolocationReplicant | undefined>(replicantRef.current.value);
 
     useEffect(() => {
-        const handleChange = (newValue?: GeolocationReplicant) => setValue(newValue && { ...newValue });
-
+        const handleChange = (newValue?: GeolocationReplicant) => setGeolocation(newValue && { ...newValue });
         replicantRef.current.on("change", handleChange);
 
         return () => {
-            replicantRef.current.removeListener("change", handleChange);
+            replicantRef.current.off("change", handleChange);
         };
     }, []);
 
     return {
-        value,
-        setValue: useCallback(
+        geolocation,
+        setGeolocation: useCallback(
             (newValue?: React.SetStateAction<GeolocationReplicant | undefined>) => {
                 if (typeof(newValue) === "function") {
                     replicantRef.current.value = newValue(replicantRef.current.value);
@@ -29,3 +28,4 @@ export const useReplicant = () => {
         )
     };
 };
+
