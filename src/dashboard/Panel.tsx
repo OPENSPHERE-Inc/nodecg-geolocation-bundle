@@ -52,7 +52,7 @@ const Form = ({ geolocation, onSubmit }: FormProps) => {
                         <input
                             className="input"
                             type="number"
-                            step={ 0.000001 }
+                            step="any"
                             required={ true }
                             disabled={ isSubmitting }
                             { ...register("position.0", {
@@ -69,7 +69,7 @@ const Form = ({ geolocation, onSubmit }: FormProps) => {
                         <input
                             className="input"
                             type="number"
-                            step={ 0.000001 }
+                            step="any"
                             required={ true }
                             disabled={ isSubmitting }
                             { ...register("position.1", {
