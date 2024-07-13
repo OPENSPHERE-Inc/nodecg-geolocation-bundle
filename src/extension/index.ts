@@ -1,5 +1,5 @@
-import type NodeCG from '@nodecg/types';
-import type { GeolocationReplicant } from '../types/schemas';
+import type NodeCG from "@nodecg/types";
+import type { GeolocationReplicant } from "../types/schemas";
 
 module.exports = function (nodecg: NodeCG.ServerAPI) {
     const geolocationReplicant = nodecg.Replicant<GeolocationReplicant>("geolocationReplicant");

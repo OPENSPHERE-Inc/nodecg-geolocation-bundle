@@ -1,7 +1,7 @@
 import Leaflet, { LatLng } from "leaflet";
 import moment from "moment";
-import React, { useEffect } from 'react';
-import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
+import React, { useEffect } from "react";
+import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { useGeolocationReplicant } from "../hooks/GeolocationReplicant";
 import { useMarkerAsset } from "../hooks/MarkerAsset";
 import { GeolocationReplicant } from "../types/schemas";
