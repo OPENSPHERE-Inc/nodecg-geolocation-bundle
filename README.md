@@ -2,6 +2,8 @@
 
 ## 概要
 
+![OBS Studio Screenshot](./medias/nodecg011.jpg)
+
 位置情報をモバイル端末から受け取って、配信画面に地図として表示するための [NodeCG](http://github.com/nodecg/nodecg) バンドルです。
 ドライブ配信、街歩き配信等で使用することを想定しています。
 
@@ -68,6 +70,8 @@ Android 向けの REST API クライアントが[こちら](./for-mobile/automat
 クライアントと言っても Automate のフロー（スクリプト）です。
 
 Automate をインストールしてから、フローをインポートしてください。
+
+![Automate flow](./medias/nodecg-geolocation-flow.jpg)
 
 ## 開発
 

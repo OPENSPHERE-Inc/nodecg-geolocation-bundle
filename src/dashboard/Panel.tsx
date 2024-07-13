@@ -11,8 +11,8 @@ interface FormData {
 }
 
 interface FormProps {
-	geolocation?: GeolocationReplicant,
-	onSubmit: (values: FormData) => unknown
+    geolocation?: GeolocationReplicant,
+    onSubmit: (values: FormData) => unknown
 }
 
 const Form = ({ geolocation, onSubmit }: FormProps) => {
