@@ -59,9 +59,9 @@ export const Index = () => {
                         </MapContainer>
 
                         <div className="timestamp">
-							<span className="is-size-1 has-text-white">
-								{ moment(geolocation.timestamp).format("YYYY/MM/DD HH:mm") }
-							</span>
+                            <span className="is-size-1 has-text-white">{
+                                moment(geolocation.timestamp).format("YYYY/MM/DD HH:mm")
+                            }</span>
                         </div>
 
                         <div className="address">
