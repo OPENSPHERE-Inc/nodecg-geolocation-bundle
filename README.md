@@ -7,13 +7,17 @@
 
 NodeCG `^2.0.0` に対応しています。
 
-## カスタムルート
+詳細は [ブログ記事](https://blog.opensphere.co.jp/posts/nodecg001) を参照してください。
 
-本バンドルでは、外部からアクセス可能なカスタムルートが提供されます。
+## REST API
+
+本バンドルでは、外部からアクセス可能な REST API が提供されます。
 モバイル端末からのアクセスを想定しています。
 
 POST のみ受け付けます。
-NodeCG のセキュリティが有効な場合は URL に `?key=[access token]` を付加してください。
+NodeCG のセキュリティが有効な場合はエンドポイント URI に `?key=NodeCG Key` を付加してください。
+
+> `NodeCG Key` は NodeCG ダッシュボードの SETTINGS から取得できます。
 
 ### 地図の座標設定
 
@@ -57,11 +61,19 @@ NodeCG のセキュリティが有効な場合は URL に `?key=[access token]` 
 
 NodeCG ダッシュボードからアップロードしてください。
 
+## Android 端末向け REST API クライアント
+
+Android 向けの REST API クライアントが[こちら](./for-mobile/automate/NodeCG_Geolocation_Push.flo)からダウンロードできます。
+
+クライアントと言っても Automate のフロー（スクリプト）です。
+
+Automate をインストールしてから、フローをインポートしてください。
+
 ## 開発
 
 以下のコマンドが使用可能です。
 
--   `npm run build`: プロジェクトをビルド
+-   `npm run build`: バンドルをビルド
 -   `npm run watch`: ファイルの変更を監視して自動的にビルドします
 -   `npm run dev`: ファイルの変更を監視して自動的にビルドし、動作環境に反映します。必要に応じて NodeCG の開発サーバーを再起動します
 
