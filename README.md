@@ -11,6 +11,14 @@ NodeCG `^2.0.0` に対応しています。
 
 詳細は [ブログ記事](https://blog.opensphere.co.jp/posts/nodecg001) を参照してください。
 
+## インストール
+
+NodeCG サーバールートディレクトリで以下のコマンドを実行してください。
+
+```shell
+nodecg install OPENSPHERE-Inc/nodecg-geolocation-bundle
+```
+
 ## REST API
 
 本バンドルでは、外部からアクセス可能な REST API が提供されます。
@@ -69,9 +77,8 @@ Android 向けの REST API クライアントが[こちら](./for-mobile/automat
 
 クライアントと言っても Automate のフロー（スクリプト）です。
 
-Automate をインストールしてから、フローをインポートしてください。
-
-![Automate flow](./medias/nodecg-geolocation-flow.jpg)
+[Automate](https://play.google.com/store/apps/details?id=com.aurhe.ap46&pcampaignid=web_share) をインストールしてから、
+フローをインポートしてください。
 
 ## 開発
 
